@@ -28,13 +28,18 @@ public class Move : MonoBehaviour {
 			return;
 		isMoving = true;
 		slider.gameObject.SetActive(true);
-		startPos = Input.GetTouch(Input.touchCount - 1).position.x;
+		if (Input.touchCount != 0)
+			startPos = Input.GetTouch(Input.touchCount - 1).position.x;
+		else
+			startPos = Input.mousePosition.x;
 		move = StartCoroutine(IsMoving());
 	}
 
 	IEnumerator IsMoving() {
 		var currentTouch = Input.touchCount - 1;
-		var touchId = Input.GetTouch(currentTouch).fingerId;
+		int touchId = 0;
+		if (Input.touchCount != 0)
+			touchId = Input.GetTouch(currentTouch).fingerId;
 		while (true)
 		{
 			for (int i = 0; i < Input.touchCount; i++)
@@ -45,13 +50,18 @@ public class Move : MonoBehaviour {
 					break;
 				}
 			}
-			var tmp = new Vector2(Input.GetTouch(currentTouch).position.x, Input.GetTouch(currentTouch).position.y + sliderDistance);
+			Vector2 touchPos;
+			if (Input.touchCount != 0)
+				touchPos = Input.GetTouch(currentTouch).position;
+			else
+				touchPos = Input.mousePosition;
+			var tmp = new Vector2(touchPos.x, touchPos.y + sliderDistance);
 			tmp.x = Mathf.Clamp(tmp.x, minSliderPos.x, maxSliderPos.x);
 			tmp.y = Mathf.Clamp(tmp.y, minSliderPos.y, maxSliderPos.y);
 			slider.gameObject.transform.position = tmp;
-			slider.value = Input.GetTouch(currentTouch).position.x - startPos;
+			slider.value = touchPos.x - startPos;
+			yield return new WaitForFixedUpdate();
 			rigid.velocity = new Vector2(slider.value * speed * Time.deltaTime, rigid.velocity.y);
-			yield return null;
 		}
 	}
 

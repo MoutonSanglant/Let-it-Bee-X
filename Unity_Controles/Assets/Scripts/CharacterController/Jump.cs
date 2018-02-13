@@ -28,13 +28,18 @@ public class Jump : MonoBehaviour {
 			return;
 		isJumping = true;
 		var touchCount = Input.touchCount - 1;
-		startPos = Input.GetTouch(touchCount).position.y;
+		if (Input.touchCount != 0)
+			startPos = Input.GetTouch(touchCount).position.y;
+		else
+			startPos = Input.mousePosition.y;
 		jump = StartCoroutine(IsJumping());
 	}
 
 	IEnumerator IsJumping() {
 		var currentTouch = Input.touchCount - 1;
-		var touchId = Input.GetTouch(currentTouch).fingerId;
+		int touchId = 0;
+		if (Input.touchCount != 0)
+			touchId = Input.GetTouch(currentTouch).fingerId;
 		while (true)
 		{
 			for (int i = 0; i < Input.touchCount; i++)
@@ -45,12 +50,18 @@ public class Jump : MonoBehaviour {
 					break;
 				}
 			}
-			var distance = Input.GetTouch(currentTouch).position.y - startPos;
+			Vector2 touchPos;
+			if (Input.touchCount != 0)
+				touchPos = Input.GetTouch(currentTouch).position;
+			else
+				touchPos = Input.mousePosition;
+			var distance = touchPos.y - startPos;
 			if ((distance > 10 && IsGrounded()) || distance < -10)
 			{
 				distance = Mathf.Clamp(distance, -10, 10);
-				rigid.AddForce(new Vector2(0, distance * jumpForce), ForceMode2D.Impulse);
-				startPos = Input.GetTouch(currentTouch).position.y;
+				yield return new WaitForFixedUpdate();
+				rigid.AddRelativeForce(new Vector2(0, distance * jumpForce), ForceMode2D.Impulse);
+				startPos = touchPos.y;
 			}
 			yield return null;
 		}
