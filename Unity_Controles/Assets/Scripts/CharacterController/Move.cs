@@ -1,38 +1,36 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Move : MonoBehaviour {
-	public Slider slider;
-	Coroutine move;
-	Rigidbody2D rigid;
-	bool isMoving;
-	public float sliderDistance = 10;
-	float startPos;
-	public Vector2 minSliderPos;
-	public Vector2 maxSliderPos;
-	public float speed = 2;
+	public Slider Slider;
+	public float Speed = 2;
+	Coroutine _move;
+	Rigidbody2D _rigid;
+	bool _isMoving;
+	float _sliderDistance = 35f;
+	float _startPos;
+	Vector2 _minSliderPos;
+	Vector2 _maxSliderPos;
 
 	void Awake() {
-		isMoving = false;
-		slider.gameObject.SetActive(false);
-		rigid = GetComponent<Rigidbody2D>();
-		minSliderPos.x = Screen.width / 10;
-		maxSliderPos.x = Screen.width / 2;
-		maxSliderPos.y = Screen.height - (Screen.height / 10);
+		_isMoving = false;
+		Slider.gameObject.SetActive(false);
+		_rigid = GetComponent<Rigidbody2D>();
+		_minSliderPos = new Vector2(Screen.width / 10, 0);
+		_maxSliderPos = new Vector2(Screen.width / 2, Screen.height - (Screen.height / 10));
 	}
 
 	public void OnTouchDown() {
-		if (isMoving)
+		if (_isMoving)
 			return;
-		isMoving = true;
-		slider.gameObject.SetActive(true);
+		_isMoving = true;
+		Slider.gameObject.SetActive(true);
 		if (Input.touchCount != 0)
-			startPos = Input.GetTouch(Input.touchCount - 1).position.x;
+			_startPos = Input.GetTouch(Input.touchCount - 1).position.x;
 		else
-			startPos = Input.mousePosition.x;
-		move = StartCoroutine(IsMoving());
+			_startPos = Input.mousePosition.x;
+		_move = StartCoroutine(IsMoving());
 	}
 
 	IEnumerator IsMoving() {
@@ -55,19 +53,19 @@ public class Move : MonoBehaviour {
 				touchPos = Input.GetTouch(currentTouch).position;
 			else
 				touchPos = Input.mousePosition;
-			var tmp = new Vector2(touchPos.x, touchPos.y + sliderDistance);
-			tmp.x = Mathf.Clamp(tmp.x, minSliderPos.x, maxSliderPos.x);
-			tmp.y = Mathf.Clamp(tmp.y, minSliderPos.y, maxSliderPos.y);
-			slider.gameObject.transform.position = tmp;
-			slider.value = touchPos.x - startPos;
+			var tmp = new Vector2(touchPos.x, touchPos.y + _sliderDistance);
+			tmp.x = Mathf.Clamp(tmp.x, _minSliderPos.x, _maxSliderPos.x);
+			tmp.y = Mathf.Clamp(tmp.y, _minSliderPos.y, _maxSliderPos.y);
+			Slider.gameObject.transform.position = tmp;
+			Slider.value = touchPos.x - _startPos;
 			yield return new WaitForFixedUpdate();
-			rigid.velocity = new Vector2(slider.value * speed * Time.deltaTime, rigid.velocity.y);
+			_rigid.velocity = new Vector2(Slider.value * Speed * Time.deltaTime, _rigid.velocity.y);
 		}
 	}
 
 	public void OnTouchUp() {
-		isMoving = false;
-		slider.gameObject.SetActive(false);
-		StopCoroutine(move);
+		_isMoving = false;
+		Slider.gameObject.SetActive(false);
+		StopCoroutine(_move);
 	}
 }

@@ -1,38 +1,36 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Jump : MonoBehaviour {
-	Coroutine jump;
-	Rigidbody2D rigid;
-	public Transform groundCheck;
-	bool isJumping;
-	float startPos;
-	public LayerMask ground;
-	public float jumpForce = 2f;
+	public Transform GroundCheck;
+	public LayerMask Ground;
+	public float JumpForce = 2f;
+	Rigidbody2D _rigid;
+	Coroutine _jump;
+	bool _isJumping;
+	float _startPos;
 
 	void Awake () 
     {
-		isJumping = false;
-		rigid = GetComponent<Rigidbody2D>();
+		_isJumping = false;
+		_rigid = GetComponent<Rigidbody2D>();
 	}
 
 	bool IsGrounded()
 	{
-		return (Physics2D.OverlapCircle(groundCheck.position, 0.1f, ground));
+		return (Physics2D.OverlapCircle(GroundCheck.position, 0.1f, Ground));
 	}
 
 	public void OnTouchDown() {
-		if (isJumping)
+		if (_isJumping)
 			return;
-		isJumping = true;
+		_isJumping = true;
 		var touchCount = Input.touchCount - 1;
 		if (Input.touchCount != 0)
-			startPos = Input.GetTouch(touchCount).position.y;
+			_startPos = Input.GetTouch(touchCount).position.y;
 		else
-			startPos = Input.mousePosition.y;
-		jump = StartCoroutine(IsJumping());
+			_startPos = Input.mousePosition.y;
+		_jump = StartCoroutine(IsJumping());
 	}
 
 	IEnumerator IsJumping() {
@@ -55,20 +53,20 @@ public class Jump : MonoBehaviour {
 				touchPos = Input.GetTouch(currentTouch).position;
 			else
 				touchPos = Input.mousePosition;
-			var distance = touchPos.y - startPos;
+			var distance = touchPos.y - _startPos;
 			if ((distance > 10 && IsGrounded()) || distance < -10)
 			{
 				distance = Mathf.Clamp(distance, -10, 10);
 				yield return new WaitForFixedUpdate();
-				rigid.AddRelativeForce(new Vector2(0, distance * jumpForce), ForceMode2D.Impulse);
-				startPos = touchPos.y;
+				_rigid.AddRelativeForce(new Vector2(0, distance * JumpForce), ForceMode2D.Impulse);
+				_startPos = touchPos.y;
 			}
 			yield return null;
 		}
 	}
 
 	public void OnTouchUp() {
-		isJumping = false;
-		StopCoroutine(jump);
+		_isJumping = false;
+		StopCoroutine(_jump);
 	}
 }
