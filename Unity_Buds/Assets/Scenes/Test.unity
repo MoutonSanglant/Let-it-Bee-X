@@ -2156,7 +2156,7 @@ GameObject:
   - component: {fileID: 1395764866}
   - component: {fileID: 1395764865}
   - component: {fileID: 1395764864}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bourgeon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2171,7 +2171,7 @@ Transform:
   m_GameObject: {fileID: 1395764862}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 4.69, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1388727186}
   m_RootOrder: 0
@@ -2406,7 +2406,7 @@ GameObject:
   - component: {fileID: 1612252374}
   - component: {fileID: 1612252373}
   - component: {fileID: 1612252377}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bourgeon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2421,7 +2421,7 @@ Transform:
   m_GameObject: {fileID: 1612252371}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 2.6, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 211195526}
   m_RootOrder: 0
@@ -3355,7 +3355,7 @@ GameObject:
   - component: {fileID: 1916663039}
   - component: {fileID: 1916663038}
   - component: {fileID: 1916663037}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bourgeon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3370,7 +3370,7 @@ Transform:
   m_GameObject: {fileID: 1916663035}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 5.7400002, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 435440690}
   m_RootOrder: 0
