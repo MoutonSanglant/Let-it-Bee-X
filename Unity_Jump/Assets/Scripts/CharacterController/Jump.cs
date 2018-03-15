@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Jump : MonoBehaviour {
+public class Jump : MonoBehaviour
+{
 	public Transform GroundCheck;
 	public LayerMask Ground;
 	public float JumpForce = 2f;
