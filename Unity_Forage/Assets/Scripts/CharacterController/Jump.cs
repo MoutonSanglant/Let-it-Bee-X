@@ -20,6 +20,7 @@ public class Jump : MonoBehaviour
 
 	public void OnTouchDown()
 	{
+		print("jump");
 		if (IsGrounded())
 			StartCoroutine(IsJumping());
 	}
