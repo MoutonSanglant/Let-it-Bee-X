@@ -148,7 +148,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.Company.LIT
+    Android: com.aazae.LIT
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
@@ -604,9 +604,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 1813fcb3-d2dd-481c-b921-e4a865046d48
-  projectName: New Unity Project (1)
-  organizationId: divya-3156115
+  cloudProjectId: 381a1493-eceb-4bb2-af84-79e4eb78e580
+  projectName: LetItBee
+  organizationId: hereandnao
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
