@@ -10,7 +10,8 @@ public class DialogManager : MonoBehaviour {
     public Text nameText;
     public Text dialogueText;
     public GameObject exclamationSprite;
-
+    public Animator animator;
+   
     
     void Start()
     {
@@ -20,6 +21,7 @@ public class DialogManager : MonoBehaviour {
     public void StartDialogue(Dialogue dialogue)
     {
         print("dialogue with" + dialogue.name);
+        animator.SetBool("IsOpen", true);
         nameText.text = dialogue.name;
         sentences.Clear();
         foreach (string sentence in dialogue.sentences)
@@ -44,6 +46,7 @@ public class DialogManager : MonoBehaviour {
     void EndDialogue()
     {
         exclamationSprite.SetActive(true);
+        animator.SetBool("IsOpen", false);
         Debug.Log("End of dialogue");
     }
     
