@@ -5,8 +5,8 @@ using UnityEngine;
 public class AttachedPollen : MonoBehaviour {
 
 	public bool HasPollen;
-	public string PollenColor;
 	public GameObject PlayerPollen;
+	public PollenColor AttachedPollenColor;
 	private SpriteRenderer _playerPollenSprite;
 
 	void Start() 
@@ -23,18 +23,19 @@ public class AttachedPollen : MonoBehaviour {
 
 	void AttachPollen (Collider2D budPollen) 
 	{
+		Bourgeon bud = budPollen.GetComponentInParent<Bourgeon> ();
 		HasPollen = true;
-		PollenColor = budPollen.transform.parent.tag;
+		AttachedPollenColor = bud.BudColor;
 		ColorPollen ();
 		PlayerPollen.SetActive (true);
 	}
 
 	void ColorPollen() 
 	{
-		if (PollenColor == "Red") {_playerPollenSprite.color = Color.red;}
-		if (PollenColor == "Blue") {_playerPollenSprite.color = Color.blue;}
-		if (PollenColor == "Green") {_playerPollenSprite.color = Color.green;}
-		if (PollenColor == "Yellow") {_playerPollenSprite.color = Color.yellow;}
+		if (AttachedPollenColor == PollenColor.Red) {_playerPollenSprite.color = Color.red;}
+		if (AttachedPollenColor == PollenColor.Blue) {_playerPollenSprite.color = Color.blue;}
+		if (AttachedPollenColor == PollenColor.Green) {_playerPollenSprite.color = Color.green;}
+		if (AttachedPollenColor == PollenColor.Yellow) {_playerPollenSprite.color = Color.yellow;}
 	}
 
 	public void DetachPollen() 

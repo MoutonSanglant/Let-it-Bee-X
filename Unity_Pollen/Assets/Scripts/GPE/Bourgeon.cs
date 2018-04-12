@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+public enum PollenColor {Yellow, Green, Red, Blue};
+
 public class Bourgeon : MonoBehaviour {
 	
 	public LayerMask PlayerLayer;
@@ -7,6 +9,7 @@ public class Bourgeon : MonoBehaviour {
 	public float CastRadius = 1f;
 	public GameObject Pollen;
 	public GameObject PollenDetector;
+	public PollenColor BudColor;
 
 	bool IsPlayerAround () 
 	{
@@ -33,7 +36,7 @@ public class Bourgeon : MonoBehaviour {
 		if (collider.gameObject.name == "Player") 
 		{
 			AttachedPollen _player = collider.GetComponent<AttachedPollen> ();
-			if (_player.HasPollen && _player.PollenColor == gameObject.transform.parent.tag) 
+			if (_player.HasPollen && _player.AttachedPollenColor == BudColor) 
 			{
 				EnablePlatforms ();
 				_player.DetachPollen ();
