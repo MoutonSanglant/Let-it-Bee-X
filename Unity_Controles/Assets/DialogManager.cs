@@ -3,25 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DialogManager : MonoBehaviour {
+public class DialogManager : Singleton<DialogManager> {
 
     private Queue<string> sentences;
 
     public Text nameText;
     public Text dialogueText;
-    public GameObject exclamationSprite;
+    private GameObject npc;
     public Animator animator;
-   
+    private Interact _interact;
+    public Button next;
+    protected DialogManager () {} 
     
     void Start()
     {
         sentences = new Queue<string>();
     }
     
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(Dialogue dialogue, GameObject npc)
     {
         print("dialogue with" + dialogue.name);
+        _interact = npc.GetComponent<Interact>();
         animator.SetBool("IsOpen", true);
+        GameObject.Find("DialogScreenArt").GetComponent<Renderer>().enabled = true;
+        next.gameObject.SetActive(true);
         nameText.text = dialogue.name;
         sentences.Clear();
         foreach (string sentence in dialogue.sentences)
@@ -45,8 +50,10 @@ public class DialogManager : MonoBehaviour {
 
     void EndDialogue()
     {
-        exclamationSprite.SetActive(true);
+        _interact.ReloadSpriteOnEndDialog();
+      //  exclamationsprite.SetActive(true);
         animator.SetBool("IsOpen", false);
+        next.gameObject.SetActive(false);
         Debug.Log("End of dialogue");
     }
     

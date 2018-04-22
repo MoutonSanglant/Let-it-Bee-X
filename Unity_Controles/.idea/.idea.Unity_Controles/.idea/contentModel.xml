@@ -10,6 +10,7 @@
         <e p="Dialogue.cs" t="Include" />
         <e p="DialogueTrigger.cs" t="Include" />
         <e p="Interact.cs" t="Include" />
+        <e p="MonoBehaviourExtended.cs" t="Include" />
         <e p="Plugins" t="Include">
           <e p="Editor" t="Include">
             <e p="JetBrains" t="Include">
@@ -23,6 +24,7 @@
             <e p="Move.cs" t="Include" />
           </e>
         </e>
+        <e p="Singleton.cs" t="Include" />
       </e>
       <e p="Library" t="ExcludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
