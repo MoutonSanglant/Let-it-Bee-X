@@ -20,8 +20,7 @@ public class Jump : MonoBehaviour
 
 	public void OnTouchDown()
 	{
-		print("jump");
-		if (IsGrounded())
+		if (IsGrounded() && !TouchManager.Instance.TouchIsUsed)
 			StartCoroutine(IsJumping());
 	}
 

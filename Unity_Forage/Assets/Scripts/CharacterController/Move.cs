@@ -6,7 +6,6 @@ public class Move : MonoBehaviour
 {
 	public Slider Slider;
 	public float Speed = 2;
-	Coroutine _move;
 	Rigidbody2D _rigid;
 	bool _isMoving;
 	float _sliderDistance = 35f;
@@ -25,7 +24,7 @@ public class Move : MonoBehaviour
 
 	public void OnTouchDown()
 	{
-		if (_isMoving)
+		if (TouchManager.Instance.TouchIsUsed || _isMoving)
 			return;
 		_isMoving = true;
 		Slider.gameObject.SetActive(true);
@@ -33,7 +32,7 @@ public class Move : MonoBehaviour
 			_startPos = Input.GetTouch(Input.touchCount - 1).position.x;
 		else
 			_startPos = Input.mousePosition.x;
-		_move = StartCoroutine(IsMoving());
+		StartCoroutine(IsMoving());
 	}
 
 	IEnumerator IsMoving()
@@ -71,6 +70,6 @@ public class Move : MonoBehaviour
 	{
 		_isMoving = false;
 		Slider.gameObject.SetActive(false);
-		StopCoroutine(_move);
+		StopAllCoroutines();
 	}
 }

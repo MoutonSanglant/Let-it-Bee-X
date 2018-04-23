@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BudButton : MonoBehaviour
+public class Flower : MonoBehaviour
 {
 	public bool PlayerInside
 	{
@@ -15,11 +15,9 @@ public class BudButton : MonoBehaviour
 	public Color ColorOut;
 	private SpriteRenderer _renderer;
 	bool _playerInside;
-	Bud _parent;
 
 	private void Awake()
 	{
-		_parent = GetComponentInParent<Bud>();
 		_renderer = GetComponent<SpriteRenderer>();
 		_playerInside = false;
 		_renderer.color = ColorOut;
@@ -28,8 +26,7 @@ public class BudButton : MonoBehaviour
 	void PlayerComesIn()
 	{
 		_playerInside = true;
-		if (!_parent.IsOpen)
-			_renderer.color = ColorIn;
+		_renderer.color = ColorIn;
 	}
 
 	void PlayerLeaves()
@@ -58,10 +55,9 @@ public class BudButton : MonoBehaviour
 
 	private void OnMouseDown()
 	{
-		print("salut");
-		if (!TouchManager.Instance.TouchIsUsed && !_parent.IsOpen && PlayerInside)
+		if (!TouchManager.Instance.TouchIsUsed && PlayerInside)
 		{
-			_parent.EnablePlatforms();
+			Nectar.Instance.RecoltNectar();
 			DisablePopUp();
 		}
 	}
