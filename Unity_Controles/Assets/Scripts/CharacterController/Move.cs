@@ -26,31 +26,39 @@ public class Move : MonoBehaviour {
 			return;
 		_isMoving = true;
 		Slider.gameObject.SetActive(true);
-		if (Input.touchCount != 0)
+/*		if (Input.touchCount != 0)
 			_startPos = Input.GetTouch(Input.touchCount - 1).position.x;
 		else
 			_startPos = Input.mousePosition.x;
+	*/
+		if (Touch.TouchCount() != 0)
+			_startPos = Touch.GetPos().x;
 		_move = StartCoroutine(IsMoving());
 	}
 
 	IEnumerator IsMoving() {
-		var currentTouch = Input.touchCount - 1;
+		var currentTouch = Touch.TouchCount() - 1;
 		int touchId = 0;
-		if (Input.touchCount != 0)
-			touchId = Input.GetTouch(currentTouch).fingerId;
+		if (Touch.TouchCount() != 0)
+			touchId = Touch.TouchID(currentTouch);
 		while (true)
 		{
-			for (int i = 0; i < Input.touchCount; i++)
+			for (int i = 0; i < Touch.TouchCount(); i++)
 			{
-				if (Input.GetTouch(i).fingerId == touchId)
+				/*if (Input.GetTouch(i).fingerId == touchId)
+				{
+					currentTouch = i;
+					break;
+				}*/
+				if (Touch.TouchID(i) == touchId)
 				{
 					currentTouch = i;
 					break;
 				}
 			}
 			Vector2 touchPos;
-			if (Input.touchCount != 0)
-				touchPos = Input.GetTouch(currentTouch).position;
+			if (Touch.TouchCount() != 0)
+				touchPos = Touch.GetPos();
 			else
 				touchPos = Input.mousePosition;
 			var tmp = new Vector2(touchPos.x, touchPos.y + _sliderDistance);
