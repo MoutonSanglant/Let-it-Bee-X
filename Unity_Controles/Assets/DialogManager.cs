@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DialogManager : Singleton<DialogManager> {
+public class DialogManager : Singleton<DialogManager> 
+{
 
     private Queue<string> sentences;
 
@@ -52,10 +53,10 @@ public class DialogManager : Singleton<DialogManager> {
 
     void EndDialogue()
     {
-        if (img)
-        img.enabled = false;
+        //if (img)
+        //img.enabled = false;
         _interact.ReloadSpriteOnEndDialog();
-        _interact.img.enabled = false;
+        //_interact.img.enabled = false;
         animator.SetBool("IsOpen", false);
         next.gameObject.SetActive(false);
         Debug.Log("End of dialogue");

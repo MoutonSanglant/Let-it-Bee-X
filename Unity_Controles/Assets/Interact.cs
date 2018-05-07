@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Interact : MonoBehaviour
 {
@@ -10,32 +9,50 @@ public class Interact : MonoBehaviour
 	GameObject go;
 	private DialogueTrigger dial;
 	
-	public Image img;
-
+	private int _layerMask;
+	public UnityEngine.UI.Image img;
+	public Sprite SpritePortraitLeft;
+	public Sprite SpritePortraitRight;
+	public DialogPortrait PortraitLeft;
+	public DialogPortrait PortraitRight;
+	public bool _isClose;
+	
+	
 	// Use this for initialization
 	void Start()
 	{
+		_layerMask = LayerMask.NameToLayer("NPC");
         dial = GetComponent<DialogueTrigger>();
 	}
 
 	// Update is called once per frame
 	void Update()
-	{
+	{	
+		if (false == _isClose)
+		{
+			return;
+		}
 		if (exclamationSprite.active)
 		{
 			if (Touch.TouchCount() > 0) // && Input.GetTouch(0).phase == TouchPhase.Began)
 			{
 				print(Touch.TouchCount());
 			//	Debug.Log("TOUCHING");
-				RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Touch.GetPos()), Vector2.zero);
+				
+				RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Touch.GetPos()), Vector2.zero, _layerMask); 
 				if (hit)
 				{
-					if (hit.collider.CompareTag("Player") || hit.collider.name == "exclamationmark" || hit.collider.CompareTag("NPC"))
+					var interact = hit.collider.GetComponent<Interact>() ?? hit.collider.GetComponentInParent<Interact>();
+
+					if (interact._isClose)
 					{
 						exclamationSprite.SetActive(false);
 						dial.TriggerDialogue();
-						Debug.Log("Touched " + hit.collider.name);
-					}	
+						PortraitLeft.SetImage(SpritePortraitLeft);
+						PortraitRight.SetImage(SpritePortraitRight);
+						Debug.Log("Touched " + hit.collider.name);	
+						
+					}
 				}
 			}
 		}
@@ -48,11 +65,19 @@ public class Interact : MonoBehaviour
 	
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		exclamationSprite.SetActive(true);
+		if (other.gameObject.CompareTag("Player"))
+		{
+			exclamationSprite.SetActive(true);
+			_isClose = true;
+		}
 	}
 
 	private void OnTriggerExit2D(Collider2D other)
 	{
-		exclamationSprite.SetActive(false);
+		if (other.gameObject.CompareTag("Player"))
+		{
+			exclamationSprite.SetActive(false);
+			_isClose = false;
+		}
 	}
 }
