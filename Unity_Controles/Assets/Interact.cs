@@ -6,11 +6,10 @@ public class Interact : MonoBehaviour
 {
 
 	public GameObject exclamationSprite;
-	GameObject go;
-	private DialogueTrigger dial;
+	private GameObject go;
+	private DialogueTrigger _dial;
 	
 	private int _layerMask;
-	public UnityEngine.UI.Image img;
 	public Sprite SpritePortraitLeft;
 	public Sprite SpritePortraitRight;
 	public DialogPortrait PortraitLeft;
@@ -19,14 +18,14 @@ public class Interact : MonoBehaviour
 	
 	
 	// Use this for initialization
-	void Start()
+	private void Start()
 	{
 		_layerMask = LayerMask.NameToLayer("NPC");
-        dial = GetComponent<DialogueTrigger>();
+        _dial = GetComponent<DialogueTrigger>();
 	}
 
 	// Update is called once per frame
-	void Update()
+	private void Update()
 	{	
 		if (false == _isClose)
 		{
@@ -39,7 +38,7 @@ public class Interact : MonoBehaviour
 				print(Touch.TouchCount());
 			//	Debug.Log("TOUCHING");
 				
-				RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Touch.GetPos()), Vector2.zero, _layerMask); 
+				var hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Touch.GetPos()), Vector2.zero, _layerMask); 
 				if (hit)
 				{
 					var interact = hit.collider.GetComponent<Interact>() ?? hit.collider.GetComponentInParent<Interact>();
@@ -47,7 +46,7 @@ public class Interact : MonoBehaviour
 					if (interact._isClose)
 					{
 						exclamationSprite.SetActive(false);
-						dial.TriggerDialogue();
+						_dial.TriggerDialogue();
 						PortraitLeft.SetImage(SpritePortraitLeft);
 						PortraitRight.SetImage(SpritePortraitRight);
 						Debug.Log("Touched " + hit.collider.name);	

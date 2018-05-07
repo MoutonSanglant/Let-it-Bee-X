@@ -14,7 +14,7 @@ public class DialogManager : Singleton<DialogManager>
     public Animator animator;
     private Interact _interact;
     public Button next;
-    private Image img;
+    public GameObject DialogBox;
     protected DialogManager () {} 
     
     void Start()
@@ -24,11 +24,10 @@ public class DialogManager : Singleton<DialogManager>
     
     public void StartDialogue(Dialogue dialogue, GameObject npc)
     {
+        DialogBox.SetActive(true);
         print("dialogue with " + dialogue.name);
         _interact = npc.GetComponent<Interact>();
-        _interact.img.enabled = true;
         animator.SetBool("IsOpen", true);
-    //    GameObject.Find("DialogScreenArt").GetComponent<Image>().enabled = true;
         next.gameObject.SetActive(true);
         nameText.text = dialogue.name;
         sentences.Clear();
@@ -53,12 +52,11 @@ public class DialogManager : Singleton<DialogManager>
 
     void EndDialogue()
     {
-        //if (img)
-        //img.enabled = false;
+        DialogBox.SetActive(false);
         _interact.ReloadSpriteOnEndDialog();
-        //_interact.img.enabled = false;
         animator.SetBool("IsOpen", false);
         next.gameObject.SetActive(false);
+        DialogBox.SetActive(false);
         Debug.Log("End of dialogue");
     }
     

@@ -12,6 +12,7 @@
         <e p="DialogueTrigger.cs" t="Include" />
         <e p="Interact.cs" t="Include" />
         <e p="MonoBehaviourExtended.cs" t="Include" />
+        <e p="PassiveDialog.cs" t="Include" />
         <e p="Plugins" t="Include">
           <e p="Editor" t="Include">
             <e p="JetBrains" t="Include">
