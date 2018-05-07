@@ -22,6 +22,7 @@
           <e p="CharacterController" t="Include">
             <e p="Jump.cs" t="Include" />
             <e p="Move.cs" t="Include" />
+            <e p="Touch.cs" t="Include" />
           </e>
         </e>
         <e p="Singleton.cs" t="Include" />

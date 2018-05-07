@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Interact : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Interact : MonoBehaviour
 	GameObject go;
 	private DialogueTrigger dial;
 	
+	public Image img;
+
 	// Use this for initialization
 	void Start()
 	{
@@ -27,7 +30,7 @@ public class Interact : MonoBehaviour
 				RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Touch.GetPos()), Vector2.zero);
 				if (hit)
 				{
-					if (hit.collider.name == "Player" || hit.collider.name == "exclamationmark" || hit.collider.name == "NPC")
+					if (hit.collider.CompareTag("Player") || hit.collider.name == "exclamationmark" || hit.collider.CompareTag("NPC"))
 					{
 						exclamationSprite.SetActive(false);
 						dial.TriggerDialogue();
