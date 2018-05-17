@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 13
-  productGUID: 8e34269bfd2830f42b7cf304a52b89af
+  productGUID: 4145ea9e0b39073459e83ed89c20fd7a
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   defaultScreenOrientation: 4
@@ -12,7 +12,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Unity_Codex
+  productName: CodexTest
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -148,7 +148,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.DefaultCompany.LiB_Codex
+    Android: com.DefaultCompany.CodexTest
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
@@ -522,14 +522,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Unity_Codex
+  metroPackageName: CodexTest
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Unity_Codex
+  metroApplicationDescription: CodexTest
   wsaImages: {}
   metroTileShortName: 
   metroCommandLineArgsFile: 
@@ -604,8 +604,8 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 16e15fd8-1ce9-4153-8e33-19f5a85f60a7
-  projectName: Unity_Codex (4)
+  cloudProjectId: 2ee88b9e-ec5f-4232-ae65-7e04dba4fab2
+  projectName: CodexTest
   organizationId: alastri
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
