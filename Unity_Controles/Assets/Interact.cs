@@ -36,7 +36,7 @@ public class Interact : MonoBehaviour
 			if (Touch.TouchCount() > 0) // && Input.GetTouch(0).phase == TouchPhase.Began)
 			{
 				print(Touch.TouchCount());
-			//	Debug.Log("TOUCHING");
+				Debug.Log("TOUCHING");
 				
 				var hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Touch.GetPos()), Vector2.zero, _layerMask); 
 				if (hit)
