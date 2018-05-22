@@ -3,29 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum CategoryEnum {A,B,C};
+
 [CreateAssetMenu(fileName = "CodexDatabase", menuName = "CodexDatabase")]
 public class CodexDatabase : ScriptableObject
 {
-	public Category[] CategoryArray;
 	public string Title, SubTitle;
+	public Category[] CategoryArray;
+	public CodexEntry[] EntryArray;
 }
 
 [System.Serializable]
 public class Category 
 {
 	public string Name;
+	public CategoryEnum Cat;
 	public bool IsUnlock;
 	public bool UnseenContent;
 	public Texture2D Thumbnail;
-	public Page[] PageArray;
-}
-
-[System.Serializable]
-public class Page 
-{
-	public string Name;
-	public bool IsUnlock;
-	public bool UnseenContent;
-	public string Description;
-	public Texture2D ImageMain, ImageTop, ImageMiddle, ImageBottom;
+	public CodexEntry[] PageArray;
 }

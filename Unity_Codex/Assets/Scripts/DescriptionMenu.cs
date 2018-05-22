@@ -8,7 +8,7 @@ public class DescriptionMenu : MonoBehaviour
 	public Text Name;
 	public Text Description;
 	public RawImage ImageMain, ImageTop, ImageMiddle, ImageBottom;
-	public Page Page;
+	public CodexEntry Page;
 
 	void OnEnable() 
 	{

@@ -16,6 +16,7 @@ public class CategoriesMenu : MonoBehaviour
 		SubTitleText.text = CodexManager.CodexDatabase.SubTitle;
 	}
 
+	//Check la base de donnée et creer les panel necessaires si unlock
 	void CheckDatabase() 
 	{
 		foreach(Category category in CodexManager.CodexDatabase.CategoryArray) 
@@ -29,9 +30,20 @@ public class CategoriesMenu : MonoBehaviour
 		GameObject newPanel = Instantiate (Panel, CategoriesDisplay.transform);
 		CategoryPanel newPanelScript = newPanel.GetComponent<CategoryPanel> ();
 		newPanelScript.MenuManager = MenuManager;
+		newPanelScript.CodexManager = CodexManager;
 		newPanelScript.Category = category;
 		newPanelScript.IsCategory = true;
+		category.UnseenContent = false;
+		CheckUnseenContent (category);
 		if (category.UnseenContent) { newPanelScript.UnseenContentPanel.SetActive (true); }
+	}
+
+	void CheckUnseenContent(Category category) {
+		foreach(CodexEntry entry in CodexManager.CodexDatabase.EntryArray) {
+			if (entry.Cat == category.Cat && entry.UnseenContent) {
+				category.UnseenContent = true;
+			}
+		}
 	}
 
 	void OnDisable() 

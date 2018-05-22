@@ -7,6 +7,7 @@ public class PagesMenu : MonoBehaviour
 {
 	public GameObject PagesDisplay, Panel;
 	public MenuManager MenuManager;
+	public CodexManager CodexManager;
 	public Text SubtitleText;
 	public Category Category;
 
@@ -16,21 +17,23 @@ public class PagesMenu : MonoBehaviour
 		SubtitleText.text = Category.Name;
 	}
 
+	//Check la base de donnée et creer les panel necessaires si unlock
 	void CheckDatabase() 
 	{
-		foreach (Page page in Category.PageArray) 
+		foreach (CodexEntry entry in CodexManager.CodexDatabase.EntryArray) 
 		{
-			if (page.IsUnlock) { CreatePagePanel (page); }
+			if (entry.IsUnlock && entry.Cat == Category.Cat) { CreateEntryPanel (entry); }
 		}
 	}
 
-	void CreatePagePanel(Page page) 
+	void CreateEntryPanel(CodexEntry entry) 
 	{
 		GameObject newPanel = Instantiate (Panel, PagesDisplay.transform);
 		CategoryPanel newPanelScript = newPanel.GetComponent<CategoryPanel> ();
 		newPanelScript.MenuManager = MenuManager;
-		newPanelScript.Page = page;
-		if (page.UnseenContent) { newPanelScript.UnseenContentPanel.SetActive (true); }
+		newPanelScript.CodexManager = CodexManager;
+		newPanelScript.Entry = entry;
+		if (entry.UnseenContent) { newPanelScript.UnseenContentPanel.SetActive (true); }
 	}
 
 	void OnDisable() 
@@ -40,9 +43,9 @@ public class PagesMenu : MonoBehaviour
 
 	void DestroyAllPages() 
 	{
-		foreach(Transform page in PagesDisplay.transform) 
+		foreach(Transform entry in PagesDisplay.transform) 
 		{
-			Destroy (page.gameObject);
+			Destroy (entry.gameObject);
 		}
 	}
 }

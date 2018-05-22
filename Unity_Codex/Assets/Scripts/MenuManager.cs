@@ -33,9 +33,9 @@ public class MenuManager : MonoBehaviour
 		PagesMenu.SetActive (true);
 	}
 
-	public void GoToDescriptionMenu(Page page) 
+	public void GoToDescriptionMenu(CodexEntry entry) 
 	{
-		DescriptionMenu.GetComponent<DescriptionMenu> ().Page = page;
+		DescriptionMenu.GetComponent<DescriptionMenu> ().Page = entry;
 		PagesMenu.SetActive (false);
 		DescriptionMenu.SetActive (true);
 	}

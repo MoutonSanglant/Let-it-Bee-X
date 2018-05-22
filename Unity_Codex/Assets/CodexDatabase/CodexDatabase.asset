@@ -8,120 +8,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2283ce708398dd4b92c16b12d07089a, type: 3}
+  m_Script: {fileID: 11500000, guid: feb19a9e12c468d4e9befaa807e992d4, type: 3}
   m_Name: CodexDatabase
   m_EditorClassIdentifier: 
+  Title: Le Codex
+  SubTitle: Subtitle
   CategoryArray:
-  - Name: Abeilles
+  - Name: A
+    Cat: 0
     IsUnlock: 0
     UnseenContent: 0
-    Thumbnail: {fileID: 2800000, guid: 34a5486c394a2f947a53bd6c152ecb7e, type: 3}
-    PageArray:
-    - Name: Apis Mellifera
-      IsUnlock: 0
-      UnseenContent: 0
-      Description: "Abeille europ\xE9enne, avette ou mouche \xE0 miel (Apis mellifera)
-        est une abeille \xE0 miel domestique originaire d'Europe. Elle est consid\xE9r\xE9e
-        comme semi-domestique. C'est une des abeilles \xE9lev\xE9es \xE0 grande \xE9chelle
-        en apiculture pour produire du miel et pour la pollinisation.  Le nom de genre
-        Apis est le terme latin pour \"abeille\", et mellifera signifie \"qui donne
-        du miel\", en r\xE9f\xE9rence \xE0 la tendance de l'esp\xE8ce \xE0 produire
-        une grande quantit\xE9 de miel pour le stocker au printemps et en \xE9t\xE9
-        avant consommation pendant l'hiver.  Gr\xE2ce \xE0 l'Homme, l'abeille europ\xE9enne
-        occupe d\xE9sormais tous les continents sauf l'Antarctique. En raison de sa
-        grande diffusion, cette esp\xE8ce est le pollinisateur le plus important pour
-        l'agriculture \xE0 l'\xE9chelle mondiale. Un certain nombre de ravageurs et
-        de maladies menacent l'abeille, en particulier le syndrome d'effondrement
-        des colonies."
-      ImageMain: {fileID: 2800000, guid: 31a0988df39950f4d8e6d6a9dc616055, type: 3}
-      ImageTop: {fileID: 2800000, guid: 47743ee1b9ddfa640892d055beb0e430, type: 3}
-      ImageMiddle: {fileID: 2800000, guid: ba88cde9986ee474fab1e4d51259dcc8, type: 3}
-      ImageBottom: {fileID: 2800000, guid: 26b6bf5ab35c4dc4d9677b53df1005eb, type: 3}
-    - Name: Apis Cetana
-      IsUnlock: 0
-      UnseenContent: 0
-      Description: "L'abeille asiatique, Apis cerana, est une abeille \xE0 miel rencontr\xE9e
-        en Inde, en Chine, en Malaisie, au Japon, au N\xE9pal, au Bangladesh."
-      ImageMain: {fileID: 2800000, guid: a57533f40916e7443a25dc9200244848, type: 3}
-      ImageTop: {fileID: 2800000, guid: 89b5e28fb033ec04ea175210bdcd854d, type: 3}
-      ImageMiddle: {fileID: 2800000, guid: d6f5b6afeb6a7c440874ce8c2a65aa0d, type: 3}
-      ImageBottom: {fileID: 2800000, guid: dfec20ae25fefdd45b362f59afd6bedd, type: 3}
-    - Name: Megachile Rotundata
-      IsUnlock: 0
-      UnseenContent: 0
-      Description: "L'abeille d\xE9coupeuse (Megachile rotundata) ou abeille tapissi\xE8re1,
-        est une esp\xE8ce d'abeille solitaire appartenant au genre des \xAB m\xE9gachiles
-        \xBB. Ces abeilles construisent des loges \xE0 partir de morceaux de feuilles
-        d\xE9coup\xE9es de (luzernes, tro\xE8nes, acacias...), dans lesquelles elles
-        d\xE9posent leurs \u0153ufs. Une de ses particularit\xE9s est de d\xE9couper
-        avec une m\xE9thode spectaculaire des morceaux de feuilles tendres (d\xE9coupe
-        circulaire \xE0 ovale aux bords nets, toujours en bordure de feuille ou de
-        foliole) qu'elle transporte ensuite en vol afin de fabriquer son nid constitu\xE9
-        de logettes confectionn\xE9es \xE0 partir des morceaux de feuilles enroul\xE9es
-        (aspect de petits cigares).  Un nombre important de feuilles peuvent ainsi
-        \xEAtre d\xE9coup\xE9es, sur le robinier faux-acacia par exemple (photo ci-contre),
-        sans cons\xE9quence apparente pour le v\xE9g\xE9tal (la \"cicatrisation\"
-        se fait rapidement, notamment gr\xE2ce au fait que l'abeille ne coupe pas
-        les nervures importantes)."
-      ImageMain: {fileID: 2800000, guid: f6ec0c23ca133384fb045304488aa46f, type: 3}
-      ImageTop: {fileID: 2800000, guid: 9d3109cc429d9894fb58040483630716, type: 3}
-      ImageMiddle: {fileID: 2800000, guid: ba61e02a766febc4ab7dec1271ebf6c0, type: 3}
-      ImageBottom: {fileID: 2800000, guid: bec4dad85e8d40f4bbe106d066b00054, type: 3}
-  - Name: "Gu\xEApes"
+    Thumbnail: {fileID: 0}
+    PageArray: []
+  - Name: B
+    Cat: 1
     IsUnlock: 0
-    UnseenContent: 1
-    Thumbnail: {fileID: 2800000, guid: 50d1ff4e757ba734ba38c539239c41c0, type: 3}
-    PageArray:
-    - Name: Vespula Vulgaris
-      IsUnlock: 0
-      UnseenContent: 1
-      Description: "La Gu\xEApe commune, Vespula vulgaris, est une gu\xEApe sociale
-        de la sous-famille des Vespinae originaire de l'Eurasie. Elle a localement
-        r\xE9gress\xE9 dans son aire de r\xE9partition d'origine, mais elle a \xE9t\xE9
-        introduite dans l'h\xE9misph\xE8re sud en Australie et Nouvelle-Z\xE9lande1
-        o\xF9 elle se comporte en esp\xE8ce tr\xE8s invasive 2,3. Elle est tr\xE8s
-        proche de la gu\xEApe germanique, Vespula germanica."
-      ImageMain: {fileID: 2800000, guid: 1e6982e68562937469bbdb4d830742ea, type: 3}
-      ImageTop: {fileID: 2800000, guid: 21b7411669a6d344f9f43af508733e23, type: 3}
-      ImageMiddle: {fileID: 2800000, guid: 153400995f2e6d547b7bc009071817f6, type: 3}
-      ImageBottom: {fileID: 2800000, guid: e23d0548276fc774dbfcd7895056bb7d, type: 3}
-    - Name: Polistes dominula
-      IsUnlock: 0
-      UnseenContent: 1
-      Description: "Plus \xE9lanc\xE9es que les gu\xEApes communes1, les polistes
-        s'en distinguent par leurs longues pattes tra\xEEnantes en vol, leur taille
-        plus longue, par le port des ailes diff\xE9rent, et surtout par leurs antennes
-        en massue orang\xE9e.  La reine fait de 13 \xE0 18 mm de long, les m\xE2les
-        et les ouvri\xE8res font 12 \xE0 15 mm2. On les distingue au premier coup
-        d\u2019\u0153il par leurs antennes jaunes, alors que les gu\xEApes du genre
-        Vespula (gu\xEApe commune, germanique etc) ont les antennes noires. En vol,
-        elles laissent pendre leurs grandes pattes arri\xE8re. Elles se distinguent
-        des Polistes bischoffi par l'extr\xE9mit\xE9 enti\xE8rement jaune orang\xE9
-        de leurs antennes. Sur leur face, le clyp\xE9us est enti\xE8rement jaune ou
-        pr\xE9sente une tache noire plus ou moins grande. Leurs ailes sont \xE9troites
-        avec deux rang\xE9es de cellules. Leur abdomen est plus fusel\xE9, avec l'extr\xE9mit\xE9
-        plus pointue que chez les Vespula.  Comme toutes les gu\xEApes, elles ont
-        un aiguillon venimeux dont elles se servent rarement contre les intrus, \xE9tant
-        peu agressives. N\xE9anmoins, l'approche \xE0 moins d'un m\xE8tre du nid peut
-        d\xE9clencher l'attaque et les piq\xFBres. Il est conseill\xE9 de s'approcher
-        doucement."
-      ImageMain: {fileID: 2800000, guid: 09994ae3a269db64d9a63dafbe6b4048, type: 3}
-      ImageTop: {fileID: 2800000, guid: e46b0619d0d259d4b851419e36dda17a, type: 3}
-      ImageMiddle: {fileID: 2800000, guid: 732c036669311a745a3fe2260c7790c9, type: 3}
-      ImageBottom: {fileID: 2800000, guid: c174bb1b58ad8bb458ea225b3c9f3efd, type: 3}
-    - Name: Vespa Crabro
-      IsUnlock: 0
-      UnseenContent: 1
-      Description: "Le frelon europ\xE9en (Vespa crabro) est une esp\xE8ce d'hym\xE9nopt\xE8res
-        eusociaux de la famille des Vespid\xE9s1 ressemblant \xE0 une gu\xEApe commune
-        mais de taille deux fois plus importante ; il s'agit de la plus grosse des
-        esp\xE8ces de gu\xEApes europ\xE9ennes.  On l'appelle aussi guichard, ou cul
-        jaune dans l'Est de la France, beurgot (burgaud en occitan) dans le Sud-Ouest
-        de la France, tal\xE8ne en Suisse, bombe ou cabridan en Provence, lombarde
-        en Bresse et en Lyonnais et arcier dans la Ni\xE8vre."
-      ImageMain: {fileID: 2800000, guid: 71ea8f6fd6a35854a82932725880545b, type: 3}
-      ImageTop: {fileID: 2800000, guid: 3e08d61cf2fc57a4e8fc8d091a7f59f4, type: 3}
-      ImageMiddle: {fileID: 2800000, guid: 6a1eb0d05bf064f499ee69f1b116319d, type: 3}
-      ImageBottom: {fileID: 2800000, guid: 82eeba19583031d46bc825b85bc7e796, type: 3}
-  Title: Codex
-  SubTitle: Select a category.
+    UnseenContent: 0
+    Thumbnail: {fileID: 0}
+    PageArray: []
+  - Name: C
+    Cat: 2
+    IsUnlock: 0
+    UnseenContent: 0
+    Thumbnail: {fileID: 0}
+    PageArray: []
+  EntryArray:
+  - {fileID: 11400000, guid: 7deb86da6235f4148a2ddd4a8e03bda8, type: 2}
+  - {fileID: 11400000, guid: c66b1159658a8fd42bda80e7b95078d1, type: 2}
+  - {fileID: 11400000, guid: 9afeee27acd2be142a25b49794fbc729, type: 2}
+  - {fileID: 11400000, guid: dd466d2a6f90e004ca66dd3b1d97d56e, type: 2}
+  - {fileID: 11400000, guid: 251c37ed5dc2a9f49a13f25479a2b0d5, type: 2}
+  - {fileID: 11400000, guid: 27a2a706927430e498cb7fd382a78b0b, type: 2}

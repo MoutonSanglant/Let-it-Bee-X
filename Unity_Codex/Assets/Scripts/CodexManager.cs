@@ -13,35 +13,27 @@ public class CodexManager : MonoBehaviour
 		TitleText.text = CodexDatabase.Title;
 	}
 
-	public void Unlock(string pageName) 
-	{
-		foreach(Category category in CodexDatabase.CategoryArray) 
-		{
-			foreach(Page page in category.PageArray) 
-			{
-				if (pageName == page.Name) 
-				{
-					category.IsUnlock = true;
-					category.UnseenContent = true;
-					page.IsUnlock = true;
-					page.UnseenContent = true;
+	//Fonction pour debloquer un entrée
+	public void UnlockEntry(int entryId) {
+		foreach(CodexEntry entry in CodexDatabase.EntryArray) {
+			if (entryId == entry.Id) {
+				entry.IsUnlock = true;
+				entry.UnseenContent = true;
+				foreach(Category category in CodexDatabase.CategoryArray) {
+					if (category.Cat == entry.Cat) {
+						category.IsUnlock = true;
+					}
 				}
 			}
-		}
+		}	
 	}
-
-
 
 	//Utile uniquement pour l'éditeur
 	void OnApplicationQuit() 
 	{
-		foreach(Category category in CodexDatabase.CategoryArray) 
-		{
-			foreach (Page page in category.PageArray) 
-			{
-				category.IsUnlock = false;
-				page.IsUnlock = false;
-			}
+		foreach(CodexEntry entry in CodexDatabase.EntryArray) {
+			entry.IsUnlock = false;
+			entry.UnseenContent = false;
 		}
 	}
 }

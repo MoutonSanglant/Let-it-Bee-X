@@ -189,14 +189,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 762573199}
-        m_MethodName: Unlock
-        m_Mode: 5
+        m_MethodName: UnlockEntry
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
-          m_StringArgument: Megachile Rotundata
+          m_StringArgument: 3
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -569,14 +569,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 762573199}
-        m_MethodName: Unlock
-        m_Mode: 5
+        m_MethodName: UnlockEntry
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
-          m_StringArgument: Polistes dominula
+          m_StringArgument: 5
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -765,14 +765,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 762573199}
-        m_MethodName: Unlock
-        m_Mode: 5
+        m_MethodName: UnlockEntry
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 6
           m_FloatArgument: 0
-          m_StringArgument: Vespa Crabro
+          m_StringArgument: 6
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -887,14 +887,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 762573199}
-        m_MethodName: Unlock
-        m_Mode: 5
+        m_MethodName: UnlockEntry
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: Apis Mellifera
+          m_StringArgument: 1
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -976,6 +976,12 @@ Prefab:
       propertyPath: TitleText
       value: 
       objectReference: {fileID: 1273891389}
+    - target: {fileID: 114758132013191758, guid: e02145e4d5edf154b977a38dc88972f1,
+        type: 2}
+      propertyPath: CodexDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: db46b0b63c52dbb40ab4072c1195d1f4,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e02145e4d5edf154b977a38dc88972f1, type: 2}
   m_IsPrefabParent: 0
@@ -1351,6 +1357,11 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 0.000038146973
       objectReference: {fileID: 0}
+    - target: {fileID: 114967635662939426, guid: 395aa38789feb0a42af8bdf92d392cd4,
+        type: 2}
+      propertyPath: CodexManager
+      value: 
+      objectReference: {fileID: 762573199}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 395aa38789feb0a42af8bdf92d392cd4, type: 2}
   m_IsPrefabParent: 0
@@ -1805,14 +1816,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 762573199}
-        m_MethodName: Unlock
-        m_Mode: 5
+        m_MethodName: UnlockEntry
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
-          m_StringArgument: Apis Cetana
+          m_StringArgument: 2
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2191,14 +2202,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 762573199}
-        m_MethodName: Unlock
-        m_Mode: 5
+        m_MethodName: UnlockEntry
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
-          m_StringArgument: Vespula Vulgaris
+          m_StringArgument: 4
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
