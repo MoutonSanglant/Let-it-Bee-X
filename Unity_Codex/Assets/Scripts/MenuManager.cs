@@ -6,7 +6,7 @@ public class MenuManager : MonoBehaviour
 {
 
 	public CodexManager CodexManager;
-	public GameObject CategoriesMenu, PagesMenu, DescriptionMenu;
+	public GameObject CategoriesMenu, EntriesMenu, DescriptionMenu;
 
 	void OnEnable() 
 	{
@@ -21,22 +21,22 @@ public class MenuManager : MonoBehaviour
 
 	public void GoToCategoriesMenu() 
 	{
-		PagesMenu.SetActive (false);
+		EntriesMenu.SetActive (false);
 		DescriptionMenu.SetActive (false);
 		CategoriesMenu.SetActive (true);
 	}
 
-	public void GoToPagesMenu (Category category) 
+	public void GoToEntriesMenu (CodexCategory category) 
 	{
-		PagesMenu.GetComponent<PagesMenu> ().Category = category;
+		EntriesMenu.GetComponent<PagesMenu> ().Category = category;
 		CategoriesMenu.SetActive (false);
-		PagesMenu.SetActive (true);
+		EntriesMenu.SetActive (true);
 	}
 
 	public void GoToDescriptionMenu(CodexEntry entry) 
 	{
-		DescriptionMenu.GetComponent<DescriptionMenu> ().Page = entry;
-		PagesMenu.SetActive (false);
+		DescriptionMenu.GetComponent<DescriptionMenu> ().Entry = entry;
+		EntriesMenu.SetActive (false);
 		DescriptionMenu.SetActive (true);
 	}
 }

@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CategoryPanel : MonoBehaviour 
+public class Panel : MonoBehaviour 
 {
-	public Category Category;
+	public CodexManager CodexManager;
+	public MenuManager MenuManager;
+	public CodexCategory Category;
+	public bool IsCategory;
 	public CodexEntry Entry;
+
 	public Text NameText;
 	public Button PanelButton;
-	public MenuManager MenuManager;
-	public CodexManager CodexManager;
 	public RawImage Thumbnail;
 	public GameObject UnseenContentPanel;
-	public bool IsCategory;
 
 	void Start() 
 	{
@@ -30,10 +31,20 @@ public class CategoryPanel : MonoBehaviour
 		Category.UnseenContent = false;
 		NameText.text = Category.Name;
 		Thumbnail.texture = Category.Thumbnail;
-		PanelButton.onClick.AddListener (() => MenuManager.GoToPagesMenu (Category));
+		CheckUnseenContent ();
+		if (Category.UnseenContent) { UnseenContentPanel.SetActive (true); }
+		PanelButton.onClick.AddListener (() => MenuManager.GoToEntriesMenu (Category));
+	}
+
+	void CheckUnseenContent() 
+	{
+		Category.UnseenContent = false;
 		foreach(CodexEntry entry in CodexManager.CodexDatabase.EntryArray) 
 		{
-			if (entry.Cat == Category.Cat && entry.UnseenContent) { Category.UnseenContent = true; }
+			if (entry.Category == Category.Category && entry.UnseenContent) 
+			{
+				Category.UnseenContent = true;
+			}
 		}
 	}
 
@@ -41,6 +52,7 @@ public class CategoryPanel : MonoBehaviour
 	{
 		NameText.text = Entry.Name;
 		Thumbnail.texture = Entry.ImageMain;
+		if (Entry.UnseenContent) { UnseenContentPanel.SetActive (true); }
 		PanelButton.onClick.AddListener (() => MenuManager.GoToDescriptionMenu (Entry));
 	}
 }

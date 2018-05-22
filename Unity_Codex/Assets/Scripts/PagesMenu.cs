@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class PagesMenu : MonoBehaviour 
 {
-	public GameObject PagesDisplay, Panel;
-	public MenuManager MenuManager;
 	public CodexManager CodexManager;
+	public MenuManager MenuManager;
+
+	public GameObject EntriesDisplay, Panel;
 	public Text SubtitleText;
-	public Category Category;
+	public CodexCategory Category;
 
 	void OnEnable() 
 	{
@@ -17,23 +18,21 @@ public class PagesMenu : MonoBehaviour
 		SubtitleText.text = Category.Name;
 	}
 
-	//Check la base de donnée et creer les panel necessaires si unlock
 	void CheckDatabase() 
 	{
 		foreach (CodexEntry entry in CodexManager.CodexDatabase.EntryArray) 
 		{
-			if (entry.IsUnlock && entry.Cat == Category.Cat) { CreateEntryPanel (entry); }
+			if (entry.IsUnlock && entry.Category == Category.Category) { CreateEntryPanel (entry); }
 		}
 	}
 
 	void CreateEntryPanel(CodexEntry entry) 
 	{
-		GameObject newPanel = Instantiate (Panel, PagesDisplay.transform);
-		CategoryPanel newPanelScript = newPanel.GetComponent<CategoryPanel> ();
-		newPanelScript.MenuManager = MenuManager;
+		GameObject newPanel = Instantiate (Panel, EntriesDisplay.transform);
+		Panel newPanelScript = newPanel.GetComponent<Panel> ();
 		newPanelScript.CodexManager = CodexManager;
+		newPanelScript.MenuManager = MenuManager;
 		newPanelScript.Entry = entry;
-		if (entry.UnseenContent) { newPanelScript.UnseenContentPanel.SetActive (true); }
 	}
 
 	void OnDisable() 
@@ -43,7 +42,7 @@ public class PagesMenu : MonoBehaviour
 
 	void DestroyAllPages() 
 	{
-		foreach(Transform entry in PagesDisplay.transform) 
+		foreach(Transform entry in EntriesDisplay.transform) 
 		{
 			Destroy (entry.gameObject);
 		}

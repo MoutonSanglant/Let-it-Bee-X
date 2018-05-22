@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 224013506771316130}
   - component: {fileID: 114967635662939426}
   m_Layer: 5
-  m_Name: Pages Menu
+  m_Name: Entries Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 224485100948464912}
   - component: {fileID: 114174472910235692}
   m_Layer: 5
-  m_Name: Pages Display
+  m_Name: Entries Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -592,15 +592,7 @@ MonoBehaviour:
   ImageTop: {fileID: 114795302914141308}
   ImageMiddle: {fileID: 114954305446155108}
   ImageBottom: {fileID: 114552213323019198}
-  Page:
-    Name: 
-    IsUnlock: 0
-    UnseenContent: 0
-    Description: 
-    ImageMain: {fileID: 0}
-    ImageTop: {fileID: 0}
-    ImageMiddle: {fileID: 0}
-    ImageBottom: {fileID: 0}
+  Entry: {fileID: 0}
 --- !u!114 &114096694882705128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -833,10 +825,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b20e9578ebfffee48a6b2241b639f1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CodexManager: {fileID: 0}
+  MenuManager: {fileID: 114489646160596078}
   CategoriesDisplay: {fileID: 1555614996467162}
   Panel: {fileID: 1887444832031390, guid: 12e94f36a1a3532479aa7c856b98a910, type: 2}
-  MenuManager: {fileID: 114489646160596078}
-  CodexManager: {fileID: 0}
   SubTitleText: {fileID: 0}
 --- !u!114 &114368179549853188
 MonoBehaviour:
@@ -1025,7 +1017,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CodexManager: {fileID: 0}
   CategoriesMenu: {fileID: 1246682393010728}
-  PagesMenu: {fileID: 1307209924631360}
+  EntriesMenu: {fileID: 1307209924631360}
   DescriptionMenu: {fileID: 1636724716988082}
 --- !u!114 &114552213323019198
 MonoBehaviour:
@@ -1501,16 +1493,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a28a6899839ac8440b5f97ded08698d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PagesDisplay: {fileID: 1703080711088866}
-  Panel: {fileID: 1887444832031390, guid: 12e94f36a1a3532479aa7c856b98a910, type: 2}
+  CodexManager: {fileID: 0}
   MenuManager: {fileID: 114489646160596078}
+  EntriesDisplay: {fileID: 1703080711088866}
+  Panel: {fileID: 1887444832031390, guid: 12e94f36a1a3532479aa7c856b98a910, type: 2}
   SubtitleText: {fileID: 0}
   Category:
     Name: 
+    Category: 0
     IsUnlock: 0
     UnseenContent: 0
     Thumbnail: {fileID: 0}
-    PageArray: []
 --- !u!114 &114992906637330662
 MonoBehaviour:
   m_ObjectHideFlags: 1

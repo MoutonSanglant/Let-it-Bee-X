@@ -12,28 +12,20 @@ public class CodexManager : MonoBehaviour
 	{
 		TitleText.text = CodexDatabase.Title;
 	}
-
-	//Fonction pour debloquer un entrée
-	public void UnlockEntry(int entryId) {
-		foreach(CodexEntry entry in CodexDatabase.EntryArray) {
-			if (entryId == entry.Id) {
+		
+	public void UnlockEntry(int entryId) 
+	{
+		foreach(CodexEntry entry in CodexDatabase.EntryArray) 
+		{
+			if (entryId == entry.Id && !entry.IsUnlock) 
+			{
 				entry.IsUnlock = true;
 				entry.UnseenContent = true;
-				foreach(Category category in CodexDatabase.CategoryArray) {
-					if (category.Cat == entry.Cat) {
-						category.IsUnlock = true;
-					}
+				foreach(CodexCategory category in CodexDatabase.CategoryArray) 
+				{
+					if (category.Category == entry.Category) { category.IsUnlock = true; }
 				}
 			}
 		}	
-	}
-
-	//Utile uniquement pour l'éditeur
-	void OnApplicationQuit() 
-	{
-		foreach(CodexEntry entry in CodexDatabase.EntryArray) {
-			entry.IsUnlock = false;
-			entry.UnseenContent = false;
-		}
 	}
 }

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6173b57f6b7daf94993e60b22fc091cc, type: 3}
+  m_Name: B1_Polistes
+  m_EditorClassIdentifier: 
+  Name: Polistes
+  Id: 4
+  Category: 1
+  IsUnlock: 0
+  UnseenContent: 0
+  Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    \n\n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+    eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+    in culpa qui officia deserunt mollit anim id est laborum."
+  ImageMain: {fileID: 2800000, guid: c174bb1b58ad8bb458ea225b3c9f3efd, type: 3}
+  ImageTop: {fileID: 2800000, guid: 732c036669311a745a3fe2260c7790c9, type: 3}
+  ImageMiddle: {fileID: 2800000, guid: e46b0619d0d259d4b851419e36dda17a, type: 3}
+  ImageBottom: {fileID: 2800000, guid: 09994ae3a269db64d9a63dafbe6b4048, type: 3}

@@ -11,27 +11,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb19a9e12c468d4e9befaa807e992d4, type: 3}
   m_Name: CodexDatabase
   m_EditorClassIdentifier: 
-  Title: Le Codex
-  SubTitle: Subtitle
+  Title: Codex
+  SubTitle: Select a category.
   CategoryArray:
-  - Name: A
-    Cat: 0
+  - Name: Abeilles
+    Category: 0
     IsUnlock: 0
     UnseenContent: 0
-    Thumbnail: {fileID: 0}
-    PageArray: []
-  - Name: B
-    Cat: 1
+    Thumbnail: {fileID: 2800000, guid: 34a5486c394a2f947a53bd6c152ecb7e, type: 3}
+  - Name: "Gu\xEApes"
+    Category: 1
     IsUnlock: 0
     UnseenContent: 0
-    Thumbnail: {fileID: 0}
-    PageArray: []
-  - Name: C
-    Cat: 2
-    IsUnlock: 0
-    UnseenContent: 0
-    Thumbnail: {fileID: 0}
-    PageArray: []
+    Thumbnail: {fileID: 2800000, guid: 50d1ff4e757ba734ba38c539239c41c0, type: 3}
   EntryArray:
   - {fileID: 11400000, guid: 7deb86da6235f4148a2ddd4a8e03bda8, type: 2}
   - {fileID: 11400000, guid: c66b1159658a8fd42bda80e7b95078d1, type: 2}

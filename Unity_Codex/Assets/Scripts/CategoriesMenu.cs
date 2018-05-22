@@ -5,45 +5,34 @@ using UnityEngine.UI;
 
 public class CategoriesMenu : MonoBehaviour 
 {
-	public GameObject CategoriesDisplay, Panel;
-	public MenuManager MenuManager;
 	public CodexManager CodexManager;
+	public MenuManager MenuManager;
+
+	public GameObject CategoriesDisplay, Panel;
 	public Text SubTitleText;
 
 	void OnEnable() 
 	{
-		CheckDatabase ();
+		CheckDatabase();
 		SubTitleText.text = CodexManager.CodexDatabase.SubTitle;
 	}
-
-	//Check la base de donnée et creer les panel necessaires si unlock
+		
 	void CheckDatabase() 
 	{
-		foreach(Category category in CodexManager.CodexDatabase.CategoryArray) 
+		foreach(CodexCategory category in CodexManager.CodexDatabase.CategoryArray) 
 		{
 			if (category.IsUnlock) { CreateCategoryPanel (category); }
 		}
 	}
 
-	void CreateCategoryPanel(Category category) 
+	void CreateCategoryPanel(CodexCategory category) 
 	{
 		GameObject newPanel = Instantiate (Panel, CategoriesDisplay.transform);
-		CategoryPanel newPanelScript = newPanel.GetComponent<CategoryPanel> ();
-		newPanelScript.MenuManager = MenuManager;
+		Panel newPanelScript = newPanel.GetComponent<Panel> ();
 		newPanelScript.CodexManager = CodexManager;
-		newPanelScript.Category = category;
+		newPanelScript.MenuManager = MenuManager;
 		newPanelScript.IsCategory = true;
-		category.UnseenContent = false;
-		CheckUnseenContent (category);
-		if (category.UnseenContent) { newPanelScript.UnseenContentPanel.SetActive (true); }
-	}
-
-	void CheckUnseenContent(Category category) {
-		foreach(CodexEntry entry in CodexManager.CodexDatabase.EntryArray) {
-			if (entry.Cat == category.Cat && entry.UnseenContent) {
-				category.UnseenContent = true;
-			}
-		}
+		newPanelScript.Category = category;
 	}
 
 	void OnDisable() 
