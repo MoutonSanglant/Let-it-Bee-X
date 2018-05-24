@@ -2,10 +2,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Move : MonoBehaviour {
+public class Move : MonoBehaviour
+{
 	public Slider Slider;
 	public float Speed = 2;
-	Coroutine _move;
 	Rigidbody2D _rigid;
 	bool _isMoving;
 	float _sliderDistance = 35f;
@@ -13,7 +13,8 @@ public class Move : MonoBehaviour {
 	Vector2 _minSliderPos;
 	Vector2 _maxSliderPos;
 
-	void Awake() {
+	void Awake()
+	{
 		_isMoving = false;
 		Slider.gameObject.SetActive(false);
 		_rigid = GetComponent<Rigidbody2D>();
@@ -21,8 +22,9 @@ public class Move : MonoBehaviour {
 		_maxSliderPos = new Vector2(Screen.width / 2, Screen.height - (Screen.height / 10));
 	}
 
-	public void OnTouchDown() {
-		if (_isMoving)
+	public void OnTouchDown()
+	{
+		if (TouchManager.Instance.TouchIsUsed || _isMoving)
 			return;
 		_isMoving = true;
 		Slider.gameObject.SetActive(true);
@@ -30,10 +32,11 @@ public class Move : MonoBehaviour {
 			_startPos = Input.GetTouch(Input.touchCount - 1).position.x;
 		else
 			_startPos = Input.mousePosition.x;
-		_move = StartCoroutine(IsMoving());
+		StartCoroutine(IsMoving());
 	}
 
-	IEnumerator IsMoving() {
+	IEnumerator IsMoving()
+	{
 		var currentTouch = Input.touchCount - 1;
 		int touchId = 0;
 		if (Input.touchCount != 0)
@@ -63,9 +66,10 @@ public class Move : MonoBehaviour {
 		}
 	}
 
-	public void OnTouchUp() {
+	public void OnTouchUp()
+	{
 		_isMoving = false;
 		Slider.gameObject.SetActive(false);
-		StopCoroutine(_move);
+		StopAllCoroutines();
 	}
 }
