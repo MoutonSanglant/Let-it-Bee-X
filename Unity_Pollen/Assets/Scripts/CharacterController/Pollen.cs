@@ -6,30 +6,38 @@ public enum PollenColor {Red, Blue, Yellow, Cyan};
 
 public class Pollen : MonoBehaviour {
 
-	public GameObject PlayerPollen;
-	public PollenColor PlayerPollenColor;
+	public GameObject AttachedPollen;
+	public PollenColor PollenColor;
+	public bool hasPollen;
+
+	public void DisablePollen() {
+		hasPollen = false;
+		AttachedPollen.SetActive (false);
+	}
 
 	void OnTriggerEnter2D(Collider2D collider) {
-		if (collider.gameObject.GetComponent<FlowerPollen>()) {
-			SetPollenColor (collider.gameObject.GetComponent<FlowerPollen>());
-			PlayerPollen.SetActive (true);
+		FlowerPollen _flower = collider.gameObject.GetComponent<FlowerPollen> ();
+		if (_flower) {
+			SetPollenColor (_flower);
+			hasPollen = true;
+			AttachedPollen.SetActive (true);
 		}
 	}
 
-	void SetPollenColor(FlowerPollen _flowerPollen) {
-		foreach(Transform pollen in PlayerPollen.transform) {
+	void SetPollenColor(FlowerPollen _flower) {
+		foreach(Transform pollen in AttachedPollen.transform) {
 			SpriteRenderer pollenSprite = pollen.GetComponent<SpriteRenderer> ();
-			if (_flowerPollen.PollenColor == PollenColor.Red){
-				PlayerPollenColor = PollenColor.Red;
+			if (_flower.PollenColor == PollenColor.Red){
+				PollenColor = PollenColor.Red;
 				pollenSprite.color = Color.red;
-			} else if (_flowerPollen.PollenColor == PollenColor.Blue) {
-				PlayerPollenColor = PollenColor.Blue;
+			} else if (_flower.PollenColor == PollenColor.Blue) {
+				PollenColor = PollenColor.Blue;
 				pollenSprite.color = Color.blue;
-			} else if (_flowerPollen.PollenColor == PollenColor.Yellow) {
-				PlayerPollenColor = PollenColor.Yellow;
+			} else if (_flower.PollenColor == PollenColor.Yellow) {
+				PollenColor = PollenColor.Yellow;
 				pollenSprite.color = Color.yellow;
-			} else if (_flowerPollen.PollenColor == PollenColor.Cyan) {
-				PlayerPollenColor = PollenColor.Cyan;
+			} else if (_flower.PollenColor == PollenColor.Cyan) {
+				PollenColor = PollenColor.Cyan;
 				pollenSprite.color = Color.cyan;
 			}
 		}

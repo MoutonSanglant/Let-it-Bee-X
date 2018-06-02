@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class Bud : MonoBehaviour
-{
+{	
+	public PollenColor PollenColor;
 	public GameObject Plateformes, Pollen;
 	public bool IsOpen
 	{
@@ -12,6 +13,11 @@ public class Bud : MonoBehaviour
 		}
 	}
 	bool _isOpen;
+
+	void Awake() {
+		FlowerPollen _pollen = Pollen.GetComponent<FlowerPollen> ();
+		_pollen.PollenColor = PollenColor;
+	}
 
 	public void EnablePlatforms()
 	{

@@ -6,7 +6,7 @@ public class FlowerPollen : MonoBehaviour {
 
 	public PollenColor PollenColor;
 
-	void Start() {
+	void Awake() {
 		SetColor ();
 	}
 		

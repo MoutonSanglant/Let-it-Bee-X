@@ -9,9 +9,10 @@ public class PollenTrigger : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D collider) {
 		if (collider.gameObject.GetComponent<Pollen> ()) {
-			Pollen _playerPollen = collider.gameObject.GetComponent<Pollen> ();
-			if (_playerPollen.PlayerPollenColor == FlowerPollen.PollenColor) {
+			Pollen _player = collider.gameObject.GetComponent<Pollen> ();
+			if (_player.hasPollen && _player.PollenColor == FlowerPollen.PollenColor) {
 				Bud.EnablePlatforms ();
+				_player.DisablePollen ();
 				gameObject.SetActive (false);
 			}
 		}
