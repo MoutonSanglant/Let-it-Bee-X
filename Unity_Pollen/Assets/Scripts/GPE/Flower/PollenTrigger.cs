@@ -17,4 +17,9 @@ public class PollenTrigger : MonoBehaviour {
 			}
 		}
 	}
+
+	public void EnablePlatforms() {
+		Bud.EnablePlatforms ();
+		gameObject.SetActive (false);
+	}
 }
