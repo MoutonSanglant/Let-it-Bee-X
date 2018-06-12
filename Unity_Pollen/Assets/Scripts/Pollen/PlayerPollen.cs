@@ -12,16 +12,21 @@ public class PlayerPollen : MonoBehaviour {
 
 	private Transform _availableAnchor;
 		
-	private void OnTriggerEnter2D (Collider2D collider) 
+	private void OnTriggerEnter2D (Collider2D collider)
 	{
 		PollenGrain _collidingGrain = collider.gameObject.GetComponent<PollenGrain> ();
 		PollenTrigger _pollenTrigger = collider.gameObject.GetComponent<PollenTrigger> ();
-		if (_collidingGrain && !_collidingGrain.AttachedToPlayer && GrainCount < PollenContainer.transform.childCount) 
-		{
-			if (_collidingGrain.GrainColor != PollenColor) { DestroyAllGrain (); }
-			AttachGrainToPlayer (_collidingGrain);
+		if (_collidingGrain) {
+			if (_collidingGrain.GrainColor != PollenColor) {
+				DestroyAllGrain ();
+			}
+			if (!_collidingGrain.AttachedToPlayer && GrainCount < PollenContainer.transform.childCount) {
+				AttachGrainToPlayer (_collidingGrain);
+			}
 		}
-		if (_pollenTrigger) { DestroyOneGrain (); }
+		if (_pollenTrigger) {
+			DestroyOneGrain ();
+		}
 	}
 
 	private void AttachGrainToPlayer(PollenGrain grain) 
