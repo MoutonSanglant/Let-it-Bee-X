@@ -6,52 +6,61 @@ public enum PollenColor{Yellow, Green, Cyan, Magenta};
 
 public class PlayerPollen : MonoBehaviour {
 
-	public GameObject PollenContainer, GrainSprite;
+	public GameObject PollenContainer;
 	public PollenColor PollenColor;
 	public int GrainCount;
+
+	private Transform _availableAnchor;
 		
-	private void OnCollisionEnter2D (Collision2D collision) {
-		PollenGrain _collidingGrain = collision.gameObject.GetComponent<PollenGrain> ();
-		if (_collidingGrain) {
-			Destroy (_collidingGrain.gameObject);
-			if (_collidingGrain.GrainColor != PollenColor) {
-				DestroyAllGrain ();
-			}
-			PollenColor = _collidingGrain.GrainColor;
-			SpawnNewGrain (_collidingGrain.GrainColor);
+	private void OnTriggerEnter2D (Collider2D collider) 
+	{
+		PollenGrain _collidingGrain = collider.gameObject.GetComponent<PollenGrain> ();
+		PollenTrigger _pollenTrigger = collider.gameObject.GetComponent<PollenTrigger> ();
+		if (_collidingGrain && !_collidingGrain.AttachedToPlayer && GrainCount < PollenContainer.transform.childCount) 
+		{
+			if (_collidingGrain.GrainColor != PollenColor) { DestroyAllGrain (); }
+			AttachGrainToPlayer (_collidingGrain);
+		}
+		if (_pollenTrigger) { DestroyOneGrain (); }
+	}
+
+	private void AttachGrainToPlayer(PollenGrain grain) 
+	{
+		GrainCount++;
+		PollenColor = grain.GrainColor;
+		SeekAvailableAnchor ();
+		grain.transform.parent = _availableAnchor;
+		grain.AttachedToPlayer = true;
+		grain.IsMovingTowardPlayer = true;
+	}
+
+	private void SeekAvailableAnchor() 
+	{
+		foreach(Transform child in PollenContainer.transform) 
+		{
+			if (child.childCount == 0) { _availableAnchor = child; }
 		}
 	}
 
-	private void SpawnNewGrain(PollenColor newGrainColor) {
-		foreach(Transform child in PollenContainer.transform) {
-			if (child.childCount == 0) {
-				GrainCount++;
-				GameObject _newGrain = Instantiate (GrainSprite, child.position, Quaternion.identity, child);
-				SetNewGrainColor (_newGrain, newGrainColor);
+	private void DestroyOneGrain() 
+	{
+		GrainCount--;
+		foreach (Transform child in PollenContainer.transform) 
+		{
+			if (child.childCount != 0) 
+			{
+				Destroy (child.GetChild (0).gameObject);
 				break;
 			}
 		}
 	}
 
-	private void SetNewGrainColor(GameObject newGrain, PollenColor pollenColor) {
-		SpriteRenderer _sprite = newGrain.GetComponent<SpriteRenderer> ();
-		if (pollenColor == PollenColor.Yellow) {
-			_sprite.color = Color.yellow;
-		} else if (pollenColor == PollenColor.Green) {
-			_sprite.color = Color.green;
-		} else if (pollenColor == PollenColor.Cyan) {
-			_sprite.color = Color.cyan;
-		} else if (pollenColor == PollenColor.Magenta) {
-			_sprite.color = Color.magenta;
-		}
-	}
-
-	private void DestroyAllGrain() {
+	private void DestroyAllGrain() 
+	{
 		GrainCount = 0;
-		foreach(Transform child in PollenContainer.transform) {
-			if (child.childCount != 0) {
-				Destroy (child.GetChild (0).gameObject);
-			}
+		foreach(Transform child in PollenContainer.transform) 
+		{
+			if (child.childCount != 0) { Destroy (child.GetChild (0).gameObject); }
 		}
 	}
 }

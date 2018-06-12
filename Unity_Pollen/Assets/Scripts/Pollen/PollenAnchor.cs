@@ -7,7 +7,8 @@ public class PollenAnchor : MonoBehaviour {
 	public float GizmosRadius;
 	public bool GrainSpawned;
 
-	void OnDrawGizmos() {
+	void OnDrawGizmos() 
+	{
 		Gizmos.color = Color.yellow;
 		Gizmos.DrawWireSphere (transform.position, GizmosRadius);
 	}
