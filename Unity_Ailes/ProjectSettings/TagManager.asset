@@ -5,7 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - Closed Bud
+  - Movable
+  - Static
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - 
   - Ground
   - Player
-  - Bud Pollen Trigger
-  - 
+  - PollenGrain
+  - AttachedPollen
   - 
   - 
   - 

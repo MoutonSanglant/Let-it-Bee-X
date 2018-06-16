@@ -2,9 +2,12 @@
 using System.Collections;
 
 public class Bud : MonoBehaviour
-{	
+{
+	public GameObject Plateformes, PollenTrigger;
+	public PollenSpawner PollenSpawner;
 	public PollenColor PollenColor;
-	public GameObject Plateformes, Pollen;
+	public bool SpawnPollen;
+	public bool IllimitedSpawn;
 	public bool IsOpen
 	{
 		get
@@ -14,17 +17,19 @@ public class Bud : MonoBehaviour
 	}
 	bool _isOpen;
 
-	void Awake() {
-		FlowerPollen _pollen = Pollen.GetComponent<FlowerPollen> ();
-		_pollen.PollenColor = PollenColor;
+	void Awake() 
+	{
+		PollenSpawner.PollenColor = PollenColor;
+		PollenSpawner.IllimitedSpawn = IllimitedSpawn;
 	}
 
 	public void EnablePlatforms()
 	{
 		TouchManager.Instance.SetIsUsed(true);
 		_isOpen = true;
+		PollenTrigger.SetActive (false);
 		Plateformes.SetActive(true);
-		Pollen.SetActive (true);
+		if (SpawnPollen) { PollenSpawner.gameObject.SetActive (true); }
 		StartCoroutine(DisableCanTouch());
 	}
 
