@@ -556,7 +556,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1275238825615400}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.29, y: -0.29, z: 5}
+  m_LocalPosition: {x: 0.71, y: 3.71, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4986035829775542}
@@ -738,7 +738,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GizmosRadius: 0.15
-  GrainSpawned: 0
 --- !u!114 &114141426181367162
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -751,7 +750,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GizmosRadius: 0.15
-  GrainSpawned: 0
 --- !u!114 &114180659378467056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -777,7 +775,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GizmosRadius: 0.15
-  GrainSpawned: 0
 --- !u!114 &114335665812407172
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -790,7 +787,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GizmosRadius: 0.15
-  GrainSpawned: 0
 --- !u!114 &114389037350279282
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -803,7 +799,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GizmosRadius: 0.15
-  GrainSpawned: 0
 --- !u!114 &114430852831619076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -816,7 +811,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GizmosRadius: 0.15
-  GrainSpawned: 0
 --- !u!114 &114450970980493304
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -829,7 +823,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GizmosRadius: 0.15
-  GrainSpawned: 0
 --- !u!114 &114510304337806838
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -841,11 +834,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d848ced0bd70047acaf6fed635477f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PollenColor: 0
   SpawnDelay: 5
-  IllimitedSpawn: 1
   PollenGrain: {fileID: 1534793747040348, guid: b7b1d30b9e117494dbd94622fa276f45,
     type: 2}
+  PollenColor: 1
+  IllimitedSpawn: 1
 --- !u!114 &114828860980058608
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -858,7 +851,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GizmosRadius: 0.15
-  GrainSpawned: 0
 --- !u!114 &114916977832099044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -871,7 +863,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GizmosRadius: 0.15
-  GrainSpawned: 0
 --- !u!212 &212088377491362418
 SpriteRenderer:
   m_ObjectHideFlags: 1

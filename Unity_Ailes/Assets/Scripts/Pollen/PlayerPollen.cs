@@ -2,53 +2,69 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PollenColor{Yellow, Green, Cyan, Magenta};
+public enum PollenColor{None, Yellow, Green, Cyan, Magenta};
 
-public class PlayerPollen : MonoBehaviour {
+public class PlayerPollen : MonoBehaviour 
+{
 
 	public GameObject PollenContainer;
-	public PollenColor PollenColor;
+	public CircleCollider2D DetachTriggerArea;
+	[HideInInspector]
+	public PollenColor PlayerPollenColor;
 	[HideInInspector]
 	public  static int GrainCount;
 
 	private Transform _availableAnchor;
-		
+
+
+	private void Update() 
+	{
+		if (Input.touchCount != 0) 
+		{
+			Touch _touch = Input.GetTouch (0);
+			Vector3 _touchPos = Camera.main.ScreenToWorldPoint (_touch.position);
+			if (_touch.tapCount == 2 && DetachTriggerArea.OverlapPoint (_touchPos)) 
+			{
+				DetachAllGrain ();
+			}
+		} else if (Input.GetMouseButtonDown(2)) {
+			DetachAllGrain ();
+		}
+	}
+
 	private void OnTriggerEnter2D (Collider2D collider)
 	{
-		PollenGrain _collidingGrain = collider.gameObject.GetComponent<PollenGrain> ();
-		PollenTrigger _pollenTrigger = collider.gameObject.GetComponent<PollenTrigger> ();
-		if (_collidingGrain) 
+		PollenGrain _grain = collider.gameObject.GetComponent<PollenGrain> ();
+		if (_grain) 
 		{
-			if (_collidingGrain.GrainColor != PollenColor) 
+			if (!_grain.AttachedToPlayer) 
 			{
-				DestroyAllGrain ();
+				if (GrainCount == 0 || _grain.GrainColor == PlayerPollenColor && GrainCount < PollenContainer.transform.childCount) 
+				{
+					AttachGrainToPlayer (_grain);
+				}
 			}
-			if (!_collidingGrain.AttachedToPlayer && GrainCount < PollenContainer.transform.childCount) 
-			{
-				AttachGrainToPlayer (_collidingGrain);
-			}
-		}
-		if (_pollenTrigger) 
-		{
-			DestroyOneGrain ();
 		}
 	}
 
 	private void AttachGrainToPlayer(PollenGrain grain) 
 	{
 		GrainCount++;
-		PollenColor = grain.GrainColor;
 		SeekAvailableAnchor ();
+		PlayerPollenColor = grain.GrainColor;
 		grain.transform.parent = _availableAnchor;
 		grain.AttachedToPlayer = true;
-		grain.IsMovingTowardPlayer = true;
+		grain.MovingTowardPlayer = true;
 	}
 
 	private void SeekAvailableAnchor() 
 	{
 		foreach(Transform child in PollenContainer.transform) 
 		{
-			if (child.childCount == 0) { _availableAnchor = child; }
+			if (child.childCount == 0) 
+			{
+				_availableAnchor = child;
+			}
 		}
 	}
 
@@ -65,12 +81,18 @@ public class PlayerPollen : MonoBehaviour {
 		}
 	}
 
-	private void DestroyAllGrain() 
+	private void DetachAllGrain() 
 	{
-		GrainCount = 0;
 		foreach(Transform child in PollenContainer.transform) 
 		{
-			if (child.childCount != 0) { Destroy (child.GetChild (0).gameObject); }
+			if (child.childCount != 0) 
+			{
+				PollenGrain _grain = child.GetComponentInChildren<PollenGrain> ();
+				_grain.AttachedToPlayer = false;
+				_grain.tag = "Movable";
+			}
 		}
+		PlayerPollenColor = PollenColor.None;
+		GrainCount = 0;
 	}
 }

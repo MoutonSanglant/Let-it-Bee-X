@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PollenSpawner : MonoBehaviour {
+public class PollenSpawner : MonoBehaviour 
+{
 
-	public PollenColor PollenColor;
 	public float SpawnDelay;
-	public bool IllimitedSpawn;
 	public GameObject PollenGrain;
+	public PollenColor PollenColor;
+	public bool IllimitedSpawn;
 
 	void Start() 
 	{
@@ -30,6 +31,7 @@ public class PollenSpawner : MonoBehaviour {
 	private void SpawnGrain(Transform grainParent) 
 	{
 		GameObject _newGrain = Instantiate (PollenGrain, grainParent.position, Quaternion.identity, grainParent);
+		_newGrain.transform.GetChild(0).gameObject.layer = 12;
 		PollenGrain _grain = _newGrain.GetComponent<PollenGrain> ();
 		_grain.GrainColor = PollenColor;
 	}

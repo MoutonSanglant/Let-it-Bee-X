@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PollenAnchor : MonoBehaviour {
+public class PollenAnchor : MonoBehaviour 
+{
 
 	public float GizmosRadius;
-	public bool GrainSpawned;
 
 	void OnDrawGizmos() 
 	{

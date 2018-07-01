@@ -329,7 +329,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1764294823245742}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.82, y: 2.08, z: 5}
+  m_LocalPosition: {x: -28.52, y: 1.91, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4609254426910954}
@@ -694,7 +694,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GizmosRadius: 0.2
-  GrainSpawned: 0
 --- !u!114 &114111940011093496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -707,7 +706,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GizmosRadius: 0.2
-  GrainSpawned: 0
 --- !u!114 &114165985068443224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -720,7 +718,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GizmosRadius: 0.2
-  GrainSpawned: 0
 --- !u!114 &114182498962826826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -733,7 +730,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GizmosRadius: 0.2
-  GrainSpawned: 0
 --- !u!114 &114204748525931128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -748,9 +744,9 @@ MonoBehaviour:
   Plateformes: {fileID: 1462298492549756}
   PollenTrigger: {fileID: 1537494566783636}
   PollenSpawner: {fileID: 114519545861650980}
-  PollenColor: 0
-  SpawnPollen: 0
-  IllimitedSpawn: 0
+  PollenColor: 1
+  SpawnPollen: 1
+  IllimitedSpawn: 1
 --- !u!114 &114313131711064390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -763,7 +759,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GizmosRadius: 0.2
-  GrainSpawned: 0
 --- !u!114 &114390121729444658
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -776,7 +771,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GizmosRadius: 0.2
-  GrainSpawned: 0
 --- !u!114 &114436565319188470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -802,7 +796,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GizmosRadius: 0.2
-  GrainSpawned: 0
 --- !u!114 &114513716903332334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -815,7 +808,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GizmosRadius: 0.2
-  GrainSpawned: 0
 --- !u!114 &114519545861650980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -827,11 +819,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d848ced0bd70047acaf6fed635477f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PollenColor: 0
   SpawnDelay: 5
-  IllimitedSpawn: 1
   PollenGrain: {fileID: 1534793747040348, guid: b7b1d30b9e117494dbd94622fa276f45,
     type: 2}
+  PollenColor: 0
+  IllimitedSpawn: 1
 --- !u!114 &114756855978867844
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -844,7 +836,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GizmosRadius: 0.2
-  GrainSpawned: 0
 --- !u!114 &114789503310488272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -857,7 +848,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bud: {fileID: 114204748525931128}
-  PollenSpawner: {fileID: 114519545861650980}
 --- !u!212 &212240882258807194
 SpriteRenderer:
   m_ObjectHideFlags: 1

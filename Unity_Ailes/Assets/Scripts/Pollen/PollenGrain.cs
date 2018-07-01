@@ -2,24 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PollenGrain : MonoBehaviour {
+public class PollenGrain : MonoBehaviour 
+{
 
-	public PollenColor GrainColor;
-	public float AttachSpeed;
-	public float GravityScale;
+	public string FreeGrainContainer;
+	public float AttachSpeed, GravityScale, DespawnDelay;
 	[HideInInspector]
-	public bool IsMovingTowardPlayer, AttachedToPlayer;
+	public PollenColor GrainColor;
+	[HideInInspector]
+	public bool MovingTowardPlayer, AttachedToPlayer, isMovable;
 
 	private SpriteRenderer _sprite;
-	private GameObject _collider;
+	private GameObject _childCollider;
 	private Rigidbody2D _rig;
+
 
 	void Start() 
 	{
 		_rig = GetComponent<Rigidbody2D> ();
 		_sprite = GetComponent<SpriteRenderer> ();
-		_collider = transform.GetChild (0).gameObject;
+		_childCollider = transform.GetChild (0).gameObject;
 		transform.hasChanged = false;
+		isMovable = true;
 		SetColor();
 	}
 
@@ -27,36 +31,57 @@ public class PollenGrain : MonoBehaviour {
 	{
 		if (AttachedToPlayer) 
 		{
-			if (IsMovingTowardPlayer) 
+			_rig.gravityScale = 0;
+			StopCoroutine ("DelayedDespawn");
+			if (MovingTowardPlayer) 
 			{
 				MoveToPlayer (); 
-			} else 
+			} 
+			else 
 			{
 				StayOnPlayer ();
 			}
-		}
+		} 
 		else if (transform.hasChanged && !AttachedToPlayer) 
 		{
-			_rig.gravityScale = GravityScale;
-			transform.parent = GameObject.Find("PollenManager").transform;
+			ReleaseGrain ();
 		}
 	}
 
 	private void MoveToPlayer() 
 	{
-		gameObject.tag = "Static";
-		_collider.layer = 11;
+		isMovable = false;
+		_childCollider.layer = 11;
 		float _moveSpeed = AttachSpeed * Time.deltaTime;
 		transform.position = Vector3.MoveTowards (transform.position, transform.parent.position, _moveSpeed);
 		if (transform.position == transform.parent.position) 
 		{
-			IsMovingTowardPlayer = false; 
+			MovingTowardPlayer = false; 
 		}
 	}
 
 	private void StayOnPlayer() 
 	{
 		transform.position = transform.parent.position;
+	}
+
+	private void ReleaseGrain()
+	{
+		_childCollider.layer = 10;
+		_rig.gravityScale = GravityScale;
+		transform.parent = GameObject.Find (FreeGrainContainer).transform;
+		StartCoroutine ("DelayedDespawn");
+	}
+
+	private IEnumerator DelayedDespawn() 
+	{
+		yield return new WaitForSeconds (DespawnDelay);
+		Destroy (gameObject);
+	}
+		
+	public void MakeMovable()
+	{
+		gameObject.tag = "Movable";
 	}
 
 	private void SetColor() 
