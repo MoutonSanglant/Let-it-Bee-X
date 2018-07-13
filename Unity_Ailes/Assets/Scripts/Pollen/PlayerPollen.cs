@@ -57,7 +57,7 @@ public class PlayerPollen : MonoBehaviour
 		}
 	}
 
-	private void DestroyOneGrain() 
+	public void DestroyOneGrain() 
 	{
 		GrainCount--;
 		foreach (Transform child in PollenContainer.transform) 
