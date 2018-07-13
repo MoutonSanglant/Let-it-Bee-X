@@ -138,10 +138,12 @@ MonoBehaviour:
   AttachSpeed: 25
   GravityScale: 0.6
   DespawnDelay: 10
+  FadeTime: 1
   GrainColor: 0
   MovingTowardPlayer: 0
   AttachedToPlayer: 0
   isMovable: 0
+  _fading: 0
 --- !u!212 &212947633382454130
 SpriteRenderer:
   m_ObjectHideFlags: 1

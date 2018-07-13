@@ -6,16 +6,18 @@ public class PollenGrain : MonoBehaviour
 {
 
 	public string FreeGrainContainer;
-	public float AttachSpeed, GravityScale, DespawnDelay;
+	public float AttachSpeed, GravityScale;
+	public float FadeTime;
 	[HideInInspector]
 	public PollenColor GrainColor;
 	[HideInInspector]
-	public bool MovingTowardPlayer, AttachedToPlayer, isMovable;
+	public bool MovingTowardPlayer, AttachedToPlayer;
+	[HideInInspector]
+	public bool OnFlower, Fading, Pushed;
 
 	private SpriteRenderer _sprite;
 	private GameObject _childCollider;
 	private Rigidbody2D _rig;
-
 
 	void Start() 
 	{
@@ -23,7 +25,7 @@ public class PollenGrain : MonoBehaviour
 		_sprite = GetComponent<SpriteRenderer> ();
 		_childCollider = transform.GetChild (0).gameObject;
 		transform.hasChanged = false;
-		isMovable = true;
+		OnFlower = true;
 		SetColor();
 	}
 
@@ -32,7 +34,6 @@ public class PollenGrain : MonoBehaviour
 		if (AttachedToPlayer) 
 		{
 			_rig.gravityScale = 0;
-			StopCoroutine ("DelayedDespawn");
 			if (MovingTowardPlayer) 
 			{
 				MoveToPlayer (); 
@@ -45,12 +46,13 @@ public class PollenGrain : MonoBehaviour
 		else if (transform.hasChanged && !AttachedToPlayer) 
 		{
 			ReleaseGrain ();
+			if (!Pushed) { Fading = true; }
 		}
+		if (Fading) { FadeOut (); }
 	}
 
 	private void MoveToPlayer() 
 	{
-		isMovable = false;
 		_childCollider.layer = 11;
 		float _moveSpeed = AttachSpeed * Time.deltaTime;
 		transform.position = Vector3.MoveTowards (transform.position, transform.parent.position, _moveSpeed);
@@ -67,21 +69,24 @@ public class PollenGrain : MonoBehaviour
 
 	private void ReleaseGrain()
 	{
+		OnFlower = false;
 		_childCollider.layer = 10;
 		_rig.gravityScale = GravityScale;
 		transform.parent = GameObject.Find (FreeGrainContainer).transform;
-		StartCoroutine ("DelayedDespawn");
+	}
+
+	private void FadeOut() {
+		if (_sprite.color.a <= 0) { Destroy (gameObject); }
+		Color _currentColor = _sprite.color;
+		float _alphaChange = Time.deltaTime / FadeTime;
+		_currentColor.a -= _alphaChange;
+		_sprite.color = _currentColor;
 	}
 
 	private IEnumerator DelayedDespawn() 
 	{
-		yield return new WaitForSeconds (DespawnDelay);
+		yield return new WaitForSeconds (FadeTime);
 		Destroy (gameObject);
-	}
-		
-	public void MakeMovable()
-	{
-		gameObject.tag = "Movable";
 	}
 
 	private void SetColor() 

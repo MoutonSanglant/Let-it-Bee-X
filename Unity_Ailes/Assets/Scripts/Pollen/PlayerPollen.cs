@@ -8,7 +8,6 @@ public class PlayerPollen : MonoBehaviour
 {
 
 	public GameObject PollenContainer;
-	public CircleCollider2D DetachTriggerArea;
 	[HideInInspector]
 	public PollenColor PlayerPollenColor;
 	[HideInInspector]
@@ -16,30 +15,20 @@ public class PlayerPollen : MonoBehaviour
 
 	private Transform _availableAnchor;
 
-
-	private void Update() 
-	{
-		if (Input.touchCount != 0) 
-		{
-			Touch _touch = Input.GetTouch (0);
-			Vector3 _touchPos = Camera.main.ScreenToWorldPoint (_touch.position);
-			if (_touch.tapCount == 2 && DetachTriggerArea.OverlapPoint (_touchPos)) 
-			{
-				DetachAllGrain ();
-			}
-		} else if (Input.GetMouseButtonDown(2)) {
-			DetachAllGrain ();
-		}
+	void Update() {
+		Debug.Log (GrainCount);
 	}
-
 	private void OnTriggerEnter2D (Collider2D collider)
 	{
 		PollenGrain _grain = collider.gameObject.GetComponent<PollenGrain> ();
 		if (_grain) 
 		{
-			if (!_grain.AttachedToPlayer) 
+			if (!_grain.AttachedToPlayer && _grain.OnFlower) 
 			{
-				if (GrainCount == 0 || _grain.GrainColor == PlayerPollenColor && GrainCount < PollenContainer.transform.childCount) 
+				if (_grain.GrainColor != PlayerPollenColor) {
+					DetachAllGrain ();
+				}
+				if (GrainCount < PollenContainer.transform.childCount) 
 				{
 					AttachGrainToPlayer (_grain);
 				}
@@ -83,6 +72,7 @@ public class PlayerPollen : MonoBehaviour
 
 	private void DetachAllGrain() 
 	{
+		GrainCount = 0;
 		foreach(Transform child in PollenContainer.transform) 
 		{
 			if (child.childCount != 0) 
@@ -90,9 +80,9 @@ public class PlayerPollen : MonoBehaviour
 				PollenGrain _grain = child.GetComponentInChildren<PollenGrain> ();
 				_grain.AttachedToPlayer = false;
 				_grain.tag = "Movable";
+				_grain.Fading = true;
 			}
 		}
 		PlayerPollenColor = PollenColor.None;
-		GrainCount = 0;
 	}
 }

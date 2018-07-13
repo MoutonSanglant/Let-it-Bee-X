@@ -159,11 +159,11 @@ public class Ailes : MonoBehaviour
 		{
 			if (anchor.childCount != 0) 
 			{
+				PlayerPollen.GrainCount--;
 				Transform _grain = anchor.GetChild (0);
 				_grain.tag = "Movable";
 				_grain.gameObject.layer = 0;
 				_grain.gameObject.GetComponent<PollenGrain> ().AttachedToPlayer = false;
-				PlayerPollen.GrainCount--;
 				break;
 			}
 		}

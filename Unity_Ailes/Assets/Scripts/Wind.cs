@@ -31,9 +31,19 @@ public class Wind : MonoBehaviour
 	private void OnTriggerStay2D (Collider2D collider) 
 	{
 		float _colDist = Vector3.Magnitude (collider.transform.position - transform.parent.position);
+		PollenGrain _grain = collider.gameObject.GetComponent<PollenGrain> ();
 		if (collider.tag == "Movable" &&  _colDist <= _pushLength) 
 		{
+			_grain.Pushed = true;
 			ApplyForce (collider, _colDist);
+		}
+	}
+
+	private void OnTriggerExit2D(Collider2D collider) {
+		PollenGrain _grain = collider.gameObject.GetComponent<PollenGrain> ();
+		if (_grain && !_grain.AttachedToPlayer) 
+		{
+			_grain.Pushed = false;
 		}
 	}
 
